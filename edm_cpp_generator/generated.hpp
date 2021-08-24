@@ -1,13 +1,10 @@
 #include <chrono>
 #include <memory>
-class QString{};
-class QGuid{};
-class QByteArray{};
-class QTime{};
-class QDate{};
-class QDateTime{};
-template<typename>
-class QList{};
+#include <QString>
+#include <QByteArray>
+#include <QDateTime>
+#include <QList>
+// clang-format off
 namespace microsoft::graph {
     class user;
     class calendar;
@@ -11593,3 +11590,4 @@ namespace microsoft::graph {
 
 } // namespace microsoft::graph
 
+// clang-format on

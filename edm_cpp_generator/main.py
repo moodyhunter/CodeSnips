@@ -249,14 +249,12 @@ def parseTreeRecursively(node: ET.Element):
 def main():
     print("#include <chrono>")
     print("#include <memory>")
-    print("class QString{};")
-    print("class QGuid{};")
-    print("class QByteArray{};")
-    print("class QTime{};")
-    print("class QDate{};")
-    print("class QDateTime{};")
-    print("template<typename>")
-    print("class QList{};")
+    print("#include <QString>")
+    print("#include <QByteArray>")
+    print("#include <QDateTime>")
+    print("#include <QList>")
+    print("// clang-format off")
+
     tree = ET.parse('metadata.xml')
     root = tree.getroot()
     parseTreeRecursively(root)
@@ -296,7 +294,7 @@ def main():
     popIdent()
     print(idented("} // namespace " + lastns))
     print("")
-
+    print("// clang-format on")
     pass
 
 
