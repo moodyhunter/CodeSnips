@@ -105,7 +105,7 @@ EDM_TYPE_MAP = {
     "Edm.Byte": "std::byte",
     "Edm.Int16": "short",
     "Edm.Short": "std::short",
-    "Edm.Guid": "QGuid",
+    "Edm.Guid": "QUuid",
     "Edm.Duration": "std::chrono::system_clock::duration",
     "Edm.Boolean": "bool"
 }
@@ -176,7 +176,7 @@ def parseNamespace(node: ET.Element):
             fullType = ns + "::" + displayName
             ALL_TYPES[fullType] = type_info()
             ALL_TYPES[fullType].name = displayName
-            if child.attrib.get("BaseType") != None:
+            if child.attrib.get("BaseType") is not None:
                 basetype = replaceColons(child.attrib["BaseType"])
                 baseFullType = edmTypeToCpp(child.attrib["BaseType"])
                 ALL_TYPES[fullType].deps.append(baseFullType)
@@ -219,8 +219,11 @@ def resolve_unresolved_types(allowForwardDeclarations: bool = False) -> list[tup
                 if k in unresolved:
                     unresolved.pop(k)
                 if not v.processed:
+                    assert k not in TYPE_PRINT_ORDER
                     v.processed = True
                     TYPE_PRINT_ORDER.append(k)
+            else:
+                pass
 
     forward_decl_stat = {}
     for k in unresolved:
@@ -253,6 +256,8 @@ def main():
     print("#include <QByteArray>")
     print("#include <QDateTime>")
     print("#include <QList>")
+    print("#include <QUuid>")
+    print("")
     print("// clang-format off")
 
     tree = ET.parse('metadata.xml')
@@ -273,14 +278,14 @@ def main():
             lastns = ns
             print(idented("namespace " + ns + " {"))
             pushIdent()
-        print(idented("class " + fullType[fullType.rindex("::")+2:] + ";"))
+        print(idented("struct " + fullType[fullType.rindex("::")+2:] + ";"))
     popIdent()
     print(idented("} // namespace " + lastns))
     print("")
 
     lastns = ""
     for fullType in TYPE_PRINT_ORDER:
-        t = ALL_TYPES[fullType]
+        t = ALL_TYPES.pop(fullType)
         ns = fullType[0:fullType.rindex("::")]
         if ns != lastns:
             if lastns != "":
@@ -294,6 +299,24 @@ def main():
     popIdent()
     print(idented("} // namespace " + lastns))
     print("")
+
+    lastns = ""
+    for fullType in ALL_TYPES.copy().keys():
+        t = ALL_TYPES.pop(fullType)
+        ns = fullType[0:fullType.rindex("::")]
+        if ns != lastns:
+            if lastns != "":
+                popIdent()
+                print(idented("} // namespace " + lastns))
+                print("")
+            lastns = ns
+            print(idented("namespace " + ns + " {"))
+            pushIdent()
+        print(t.content)
+    popIdent()
+    print(idented("} // namespace " + lastns))
+    print("")
+
     print("// clang-format on")
     pass
 

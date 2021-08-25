@@ -4,67 +4,69 @@
 #include <QByteArray>
 #include <QDateTime>
 #include <QList>
+#include <QUuid>
+
 // clang-format off
 namespace microsoft::graph {
-    class user;
-    class calendar;
-    class calendarGroup;
-    class event;
-    class drive;
-    class site;
-    class onenote;
-    class userActivity;
-    class team;
-    class baseItem;
-    class driveItem;
-    class list;
-    class itemAnalytics;
+    struct user;
+    struct calendar;
+    struct calendarGroup;
+    struct event;
+    struct drive;
+    struct site;
+    struct onenote;
+    struct userActivity;
+    struct team;
+    struct baseItem;
+    struct driveItem;
+    struct list;
+    struct itemAnalytics;
 } // namespace microsoft::graph
 
 namespace microsoft::graph::termStore {
-    class store;
+    struct store;
 } // namespace microsoft::graph::termStore
 
 namespace microsoft::graph {
-    class notebook;
-    class onenotePage;
-    class sectionGroup;
-    class onenoteSection;
-    class activityHistoryItem;
-    class channel;
-    class group;
-    class itemActivityStat;
-    class listItem;
-    class educationUser;
-    class educationSchool;
-    class educationClass;
-    class workbook;
-    class workbookNamedItem;
-    class workbookTable;
-    class workbookWorksheet;
-    class workbookChart;
-    class workbookPivotTable;
-    class eventMessage;
-    class itemActivity;
-    class termsAndConditions;
-    class deviceAndAppManagementRoleAssignment;
-    class roleDefinition;
-    class termsAndConditionsAcceptanceStatus;
-    class roleAssignment;
-    class printer;
-    class printerShare;
-    class printTaskDefinition;
-    class printJob;
-    class printerBase;
-    class printTaskTrigger;
-    class printTask;
+    struct notebook;
+    struct onenotePage;
+    struct sectionGroup;
+    struct onenoteSection;
+    struct activityHistoryItem;
+    struct channel;
+    struct group;
+    struct itemActivityStat;
+    struct listItem;
+    struct educationUser;
+    struct educationSchool;
+    struct educationClass;
+    struct workbook;
+    struct workbookNamedItem;
+    struct workbookTable;
+    struct workbookWorksheet;
+    struct workbookChart;
+    struct workbookPivotTable;
+    struct eventMessage;
+    struct itemActivity;
+    struct termsAndConditions;
+    struct deviceAndAppManagementRoleAssignment;
+    struct roleDefinition;
+    struct termsAndConditionsAcceptanceStatus;
+    struct roleAssignment;
+    struct printer;
+    struct printerShare;
+    struct printTaskDefinition;
+    struct printJob;
+    struct printerBase;
+    struct printTaskTrigger;
+    struct printTask;
 } // namespace microsoft::graph
 
 namespace microsoft::graph::termStore {
-    class group;
-    class set;
-    class term;
-    class relation;
+    struct group;
+    struct set;
+    struct term;
+    struct relation;
 } // namespace microsoft::graph::termStore
 
 namespace microsoft::graph {
@@ -3698,7 +3700,7 @@ namespace microsoft::graph {
     };
 
     struct restrictedSignIn : graph::signIn {
-        QGuid targetTenantId;
+        QUuid targetTenantId;
     };
 
     struct emailAddress {
@@ -3715,15 +3717,15 @@ namespace microsoft::graph {
     };
 
     struct assignedLicense {
-        QList<QGuid> disabledPlans;
-        QGuid skuId;
+        QList<QUuid> disabledPlans;
+        QUuid skuId;
     };
 
     struct assignedPlan {
         QDateTime assignedDateTime;
         QString capabilityStatus;
         QString service;
-        QGuid servicePlanId;
+        QUuid servicePlanId;
     };
 
     struct employeeOrgData {
@@ -3739,9 +3741,9 @@ namespace microsoft::graph {
 
     struct licenseAssignmentState {
         QString assignedByGroup;
-        QList<QGuid> disabledPlans;
+        QList<QUuid> disabledPlans;
         QString error;
-        QGuid skuId;
+        QUuid skuId;
         QString state;
     };
 
@@ -3783,13 +3785,13 @@ namespace microsoft::graph {
     };
 
     struct appRoleAssignment : graph::directoryObject {
-        QGuid appRoleId;
+        QUuid appRoleId;
         QDateTime createdDateTime;
         QString principalDisplayName;
-        QGuid principalId;
+        QUuid principalId;
         QString principalType;
         QString resourceDisplayName;
-        QGuid resourceId;
+        QUuid resourceId;
     };
 
     struct oAuth2PermissionGrant : graph::entity {
@@ -3848,7 +3850,7 @@ namespace microsoft::graph {
     };
 
     struct addIn {
-        QGuid id;
+        QUuid id;
         QList<microsoft::graph::keyValue> properties;
         QString type;
     };
@@ -3857,7 +3859,7 @@ namespace microsoft::graph {
         QList<QString> allowedMemberTypes;
         QString description;
         QString displayName;
-        QGuid id;
+        QUuid id;
         bool isEnabled;
         QString origin;
         QString value;
@@ -3876,7 +3878,7 @@ namespace microsoft::graph {
         QString displayName;
         QDateTime endDateTime;
         QByteArray key;
-        QGuid keyId;
+        QUuid keyId;
         QDateTime startDateTime;
         QString type;
         QString usage;
@@ -3892,7 +3894,7 @@ namespace microsoft::graph {
         QString displayName;
         QDateTime endDateTime;
         QString hint;
-        QGuid keyId;
+        QUuid keyId;
         QString secretText;
         QDateTime startDateTime;
     };
@@ -3953,7 +3955,7 @@ namespace microsoft::graph {
     struct permissionScope {
         QString adminConsentDescription;
         QString adminConsentDisplayName;
-        QGuid id;
+        QUuid id;
         bool isEnabled;
         QString origin;
         QString type;
@@ -4267,14 +4269,14 @@ namespace microsoft::graph {
     };
 
     struct resourceAccess {
-        QGuid id;
+        QUuid id;
         QString type;
     };
 
     struct servicePlanInfo {
         QString appliesTo;
         QString provisioningStatus;
-        QGuid servicePlanId;
+        QUuid servicePlanId;
         QString servicePlanName;
     };
 
@@ -4324,7 +4326,7 @@ namespace microsoft::graph {
 
     struct contract : graph::directoryObject {
         QString contractType;
-        QGuid customerId;
+        QUuid customerId;
         QString defaultDomainName;
         QString displayName;
     };
@@ -4364,7 +4366,7 @@ namespace microsoft::graph {
     struct directoryObjectPartnerReference : graph::directoryObject {
         QString description;
         QString displayName;
-        QGuid externalPartnerTenantId;
+        QUuid externalPartnerTenantId;
         QString objectType;
     };
 
@@ -4483,7 +4485,7 @@ namespace microsoft::graph {
         int consumedUnits;
         microsoft::graph::licenseUnitsDetail prepaidUnits;
         QList<microsoft::graph::servicePlanInfo> servicePlans;
-        QGuid skuId;
+        QUuid skuId;
         QString skuPartNumber;
     };
 
@@ -6053,8 +6055,8 @@ namespace microsoft::graph {
 
     struct onPremisesConditionalAccessSettings : graph::entity {
         bool enabled;
-        QList<QGuid> excludedGroups;
-        QList<QGuid> includedGroups;
+        QList<QUuid> excludedGroups;
+        QList<QUuid> includedGroups;
         bool overrideDefaultRule;
     };
 
@@ -7738,16 +7740,16 @@ namespace microsoft::graph {
     };
 
     struct teleconferenceDeviceQuality {
-        QGuid callChainId;
+        QUuid callChainId;
         QString cloudServiceDeploymentEnvironment;
         QString cloudServiceDeploymentId;
         QString cloudServiceInstanceName;
         QString cloudServiceName;
         QString deviceDescription;
         QString deviceName;
-        QGuid mediaLegId;
+        QUuid mediaLegId;
         QList<microsoft::graph::teleconferenceDeviceMediaQuality> mediaQualityList;
-        QGuid participantId;
+        QUuid participantId;
     };
 
     struct teleconferenceDeviceVideoQuality : graph::teleconferenceDeviceMediaQuality {
@@ -8534,7 +8536,7 @@ namespace microsoft::graph {
 
     struct licenseDetails : graph::entity {
         QList<microsoft::graph::servicePlanInfo> servicePlans;
-        QGuid skuId;
+        QUuid skuId;
         QString skuPartNumber;
     };
 
@@ -8690,7 +8692,7 @@ namespace microsoft::graph {
         QString appDisplayName;
         QString appId;
         QString applicationTemplateId;
-        QGuid appOwnerOrganizationId;
+        QUuid appOwnerOrganizationId;
         bool appRoleAssignmentRequired;
         QList<microsoft::graph::appRole> appRoles;
         QString description;
@@ -8713,7 +8715,7 @@ namespace microsoft::graph {
         QString servicePrincipalType;
         QString signInAudience;
         QList<QString> tags;
-        QGuid tokenEncryptionKeyId;
+        QUuid tokenEncryptionKeyId;
         QList<microsoft::graph::appRoleAssignment> appRoleAssignedTo;
         QList<microsoft::graph::appRoleAssignment> appRoleAssignments;
         QList<microsoft::graph::claimsMappingPolicy> claimsMappingPolicies;
@@ -8732,7 +8734,7 @@ namespace microsoft::graph {
 
     struct apiApplication {
         bool acceptMappedClaims;
-        QList<QGuid> knownClientApplications;
+        QList<QUuid> knownClientApplications;
         QList<microsoft::graph::permissionScope> oauth2PermissionScopes;
         QList<microsoft::graph::preAuthorizedApplication> preAuthorizedApplications;
         int requestedAccessTokenVersion;
@@ -8773,7 +8775,7 @@ namespace microsoft::graph {
         microsoft::graph::allowInvitesFrom allowInvitesFrom;
         bool blockMsolPowerShell;
         microsoft::graph::defaultUserRolePermissions defaultUserRolePermissions;
-        QGuid guestUserRoleId;
+        QUuid guestUserRoleId;
     };
 
     struct permissionGrantPolicy : graph::policyBase {
@@ -9486,7 +9488,7 @@ namespace microsoft::graph {
         QList<microsoft::graph::windowsInformationProtectionApp> protectedApps;
         bool protectionUnderLockConfigRequired;
         bool revokeOnUnenrollDisabled;
-        QGuid rightsManagementServicesTemplateId;
+        QUuid rightsManagementServicesTemplateId;
         QList<microsoft::graph::windowsInformationProtectionResourceCollection> smbAutoEncryptedFileExtensions;
         QList<microsoft::graph::targetedManagedAppPolicyAssignment> assignments;
         QList<microsoft::graph::windowsInformationProtectionAppLockerFile> exemptAppLockerFiles;
@@ -9594,7 +9596,7 @@ namespace microsoft::graph {
         int totalLicenseCount;
         int usedLicenseCount;
         QString vppOrganizationName;
-        QGuid vppTokenId;
+        QUuid vppTokenId;
     };
 
     struct deviceCompliancePolicy : graph::entity {
@@ -10718,8 +10720,8 @@ namespace microsoft::graph {
         QString resource;
         microsoft::graph::resourceData resourceData;
         QDateTime subscriptionExpirationDateTime;
-        QGuid subscriptionId;
-        QGuid tenantId;
+        QUuid subscriptionId;
+        QUuid tenantId;
     };
 
     struct changeNotificationCollection {
@@ -11013,7 +11015,7 @@ namespace microsoft::graph {
         QString signInAudience;
         microsoft::graph::spaApplication spa;
         QList<QString> tags;
-        QGuid tokenEncryptionKeyId;
+        QUuid tokenEncryptionKeyId;
         microsoft::graph::verifiedPublisher verifiedPublisher;
         microsoft::graph::webApplication web;
         std::unique_ptr<microsoft::graph::directoryObject> createdOnBehalfOf;
@@ -11589,5 +11591,951 @@ namespace microsoft::graph {
     };
 
 } // namespace microsoft::graph
+
+namespace microsoft::graph {
+    struct invitation : graph::entity {
+        QString invitedUserDisplayName;
+        QString invitedUserEmailAddress;
+        microsoft::graph::invitedUserMessageInfo invitedUserMessageInfo;
+        QString invitedUserType;
+        QString inviteRedeemUrl;
+        QString inviteRedirectUrl;
+        bool sendInvitationMessage;
+        QString status;
+        std::unique_ptr<microsoft::graph::user> invitedUser;
+    };
+
+    struct user : graph::directoryObject {
+        bool accountEnabled;
+        QString ageGroup;
+        QList<microsoft::graph::assignedLicense> assignedLicenses;
+        QList<microsoft::graph::assignedPlan> assignedPlans;
+        QList<QString> businessPhones;
+        QString city;
+        QString companyName;
+        QString consentProvidedForMinor;
+        QString country;
+        QDateTime createdDateTime;
+        QString creationType;
+        QString department;
+        QString displayName;
+        QDateTime employeeHireDate;
+        QString employeeId;
+        microsoft::graph::employeeOrgData employeeOrgData;
+        QString employeeType;
+        QString externalUserState;
+        QDateTime externalUserStateChangeDateTime;
+        QString faxNumber;
+        QString givenName;
+        QList<microsoft::graph::objectIdentity> identities;
+        QList<QString> imAddresses;
+        bool isResourceAccount;
+        QString jobTitle;
+        QDateTime lastPasswordChangeDateTime;
+        QString legalAgeGroupClassification;
+        QList<microsoft::graph::licenseAssignmentState> licenseAssignmentStates;
+        QString mail;
+        QString mailNickname;
+        QString mobilePhone;
+        QString officeLocation;
+        QString onPremisesDistinguishedName;
+        QString onPremisesDomainName;
+        microsoft::graph::onPremisesExtensionAttributes onPremisesExtensionAttributes;
+        QString onPremisesImmutableId;
+        QDateTime onPremisesLastSyncDateTime;
+        QList<microsoft::graph::onPremisesProvisioningError> onPremisesProvisioningErrors;
+        QString onPremisesSamAccountName;
+        QString onPremisesSecurityIdentifier;
+        bool onPremisesSyncEnabled;
+        QString onPremisesUserPrincipalName;
+        QList<QString> otherMails;
+        QString passwordPolicies;
+        microsoft::graph::passwordProfile passwordProfile;
+        QString postalCode;
+        QString preferredLanguage;
+        QList<microsoft::graph::provisionedPlan> provisionedPlans;
+        QList<QString> proxyAddresses;
+        bool showInAddressList;
+        QDateTime signInSessionsValidFromDateTime;
+        QString state;
+        QString streetAddress;
+        QString surname;
+        QString usageLocation;
+        QString userPrincipalName;
+        QString userType;
+        microsoft::graph::mailboxSettings mailboxSettings;
+        int deviceEnrollmentLimit;
+        QString aboutMe;
+        QDateTime birthday;
+        QDateTime hireDate;
+        QList<QString> interests;
+        QString mySite;
+        QList<QString> pastProjects;
+        QString preferredName;
+        QList<QString> responsibilities;
+        QList<QString> schools;
+        QList<QString> skills;
+        QList<microsoft::graph::appRoleAssignment> appRoleAssignments;
+        QList<microsoft::graph::directoryObject> createdObjects;
+        QList<microsoft::graph::directoryObject> directReports;
+        QList<microsoft::graph::licenseDetails> licenseDetails;
+        std::unique_ptr<microsoft::graph::directoryObject> manager;
+        QList<microsoft::graph::directoryObject> memberOf;
+        QList<microsoft::graph::oAuth2PermissionGrant> oauth2PermissionGrants;
+        QList<microsoft::graph::directoryObject> ownedDevices;
+        QList<microsoft::graph::directoryObject> ownedObjects;
+        QList<microsoft::graph::directoryObject> registeredDevices;
+        QList<microsoft::graph::scopedRoleMembership> scopedRoleMemberOf;
+        QList<microsoft::graph::directoryObject> transitiveMemberOf;
+        std::unique_ptr<microsoft::graph::calendar> calendar;
+        QList<microsoft::graph::calendarGroup> calendarGroups;
+        QList<microsoft::graph::calendar> calendars;
+        QList<microsoft::graph::event> calendarView;
+        QList<microsoft::graph::contactFolder> contactFolders;
+        QList<microsoft::graph::contact> contacts;
+        QList<microsoft::graph::event> events;
+        std::unique_ptr<microsoft::graph::inferenceClassification> inferenceClassification;
+        QList<microsoft::graph::mailFolder> mailFolders;
+        QList<microsoft::graph::message> messages;
+        std::unique_ptr<microsoft::graph::outlookUser> outlook;
+        QList<microsoft::graph::person> people;
+        std::unique_ptr<microsoft::graph::profilePhoto> photo;
+        QList<microsoft::graph::profilePhoto> photos;
+        std::unique_ptr<microsoft::graph::drive> drive;
+        QList<microsoft::graph::drive> drives;
+        QList<microsoft::graph::site> followedSites;
+        QList<microsoft::graph::extension> extensions;
+        QList<microsoft::graph::agreementAcceptance> agreementAcceptances;
+        QList<microsoft::graph::managedDevice> managedDevices;
+        QList<microsoft::graph::managedAppRegistration> managedAppRegistrations;
+        QList<microsoft::graph::deviceManagementTroubleshootingEvent> deviceManagementTroubleshootingEvents;
+        std::unique_ptr<microsoft::graph::plannerUser> planner;
+        std::unique_ptr<microsoft::graph::officeGraphInsights> insights;
+        std::unique_ptr<microsoft::graph::userSettings> settings;
+        std::unique_ptr<microsoft::graph::onenote> onenote;
+        QList<microsoft::graph::userActivity> activities;
+        QList<microsoft::graph::onlineMeeting> onlineMeetings;
+        std::unique_ptr<microsoft::graph::presence> presence;
+        std::unique_ptr<microsoft::graph::authentication> authentication;
+        QList<microsoft::graph::chat> chats;
+        QList<microsoft::graph::team> joinedTeams;
+        std::unique_ptr<microsoft::graph::userTeamwork> teamwork;
+        std::unique_ptr<microsoft::graph::todo> todo;
+    };
+
+    struct calendar : graph::entity {
+        QList<microsoft::graph::onlineMeetingProviderType> allowedOnlineMeetingProviders;
+        bool canEdit;
+        bool canShare;
+        bool canViewPrivateItems;
+        QString changeKey;
+        microsoft::graph::calendarColor color;
+        microsoft::graph::onlineMeetingProviderType defaultOnlineMeetingProvider;
+        QString hexColor;
+        bool isDefaultCalendar;
+        bool isRemovable;
+        bool isTallyingResponses;
+        QString name;
+        microsoft::graph::emailAddress owner;
+        QList<microsoft::graph::calendarPermission> calendarPermissions;
+        QList<microsoft::graph::event> calendarView;
+        QList<microsoft::graph::event> events;
+        QList<microsoft::graph::multiValueLegacyExtendedProperty> multiValueExtendedProperties;
+        QList<microsoft::graph::singleValueLegacyExtendedProperty> singleValueExtendedProperties;
+    };
+
+    struct calendarGroup : graph::entity {
+        QString changeKey;
+        QUuid classId;
+        QString name;
+        QList<microsoft::graph::calendar> calendars;
+    };
+
+    struct event : graph::outlookItem {
+        bool allowNewTimeProposals;
+        QList<microsoft::graph::attendee> attendees;
+        microsoft::graph::itemBody body;
+        QString bodyPreview;
+        microsoft::graph::dateTimeTimeZone end;
+        bool hasAttachments;
+        bool hideAttendees;
+        QString iCalUId;
+        microsoft::graph::importance importance;
+        bool isAllDay;
+        bool isCancelled;
+        bool isDraft;
+        bool isOnlineMeeting;
+        bool isOrganizer;
+        bool isReminderOn;
+        microsoft::graph::location location;
+        QList<microsoft::graph::location> locations;
+        microsoft::graph::onlineMeetingInfo onlineMeeting;
+        microsoft::graph::onlineMeetingProviderType onlineMeetingProvider;
+        QString onlineMeetingUrl;
+        microsoft::graph::recipient organizer;
+        QString originalEndTimeZone;
+        QDateTime originalStart;
+        QString originalStartTimeZone;
+        microsoft::graph::patternedRecurrence recurrence;
+        int reminderMinutesBeforeStart;
+        bool responseRequested;
+        microsoft::graph::responseStatus responseStatus;
+        microsoft::graph::sensitivity sensitivity;
+        QString seriesMasterId;
+        microsoft::graph::freeBusyStatus showAs;
+        microsoft::graph::dateTimeTimeZone start;
+        QString subject;
+        QString transactionId;
+        microsoft::graph::eventType type;
+        QString webLink;
+        QList<microsoft::graph::attachment> attachments;
+        std::unique_ptr<microsoft::graph::calendar> calendar;
+        QList<microsoft::graph::extension> extensions;
+        QList<microsoft::graph::event> instances;
+        QList<microsoft::graph::multiValueLegacyExtendedProperty> multiValueExtendedProperties;
+        QList<microsoft::graph::singleValueLegacyExtendedProperty> singleValueExtendedProperties;
+    };
+
+    struct baseItem : graph::entity {
+        microsoft::graph::identitySet createdBy;
+        QDateTime createdDateTime;
+        QString description;
+        QString eTag;
+        microsoft::graph::identitySet lastModifiedBy;
+        QDateTime lastModifiedDateTime;
+        QString name;
+        microsoft::graph::itemReference parentReference;
+        QString webUrl;
+        std::unique_ptr<microsoft::graph::user> createdByUser;
+        std::unique_ptr<microsoft::graph::user> lastModifiedByUser;
+    };
+
+    struct drive : graph::baseItem {
+        QString driveType;
+        microsoft::graph::identitySet owner;
+        microsoft::graph::quota quota;
+        microsoft::graph::sharepointIds sharePointIds;
+        microsoft::graph::systemFacet system;
+        QList<microsoft::graph::driveItem> following;
+        QList<microsoft::graph::driveItem> items;
+        std::unique_ptr<microsoft::graph::list> list;
+        std::unique_ptr<microsoft::graph::driveItem> root;
+        QList<microsoft::graph::driveItem> special;
+    };
+
+    struct site : graph::baseItem {
+        QString displayName;
+        microsoft::graph::publicError error;
+        microsoft::graph::root root;
+        microsoft::graph::sharepointIds sharepointIds;
+        microsoft::graph::siteCollection siteCollection;
+        std::unique_ptr<microsoft::graph::itemAnalytics> analytics;
+        QList<microsoft::graph::columnDefinition> columns;
+        QList<microsoft::graph::contentType> contentTypes;
+        std::unique_ptr<microsoft::graph::drive> drive;
+        QList<microsoft::graph::drive> drives;
+        QList<microsoft::graph::baseItem> items;
+        QList<microsoft::graph::list> lists;
+        QList<microsoft::graph::permission> permissions;
+        QList<microsoft::graph::site> sites;
+        std::unique_ptr<microsoft::graph::termStore::store> termStore;
+        QList<microsoft::graph::termStore::store> termStores;
+        std::unique_ptr<microsoft::graph::onenote> onenote;
+    };
+
+    struct onenote : graph::entity {
+        QList<microsoft::graph::notebook> notebooks;
+        QList<microsoft::graph::onenoteOperation> operations;
+        QList<microsoft::graph::onenotePage> pages;
+        QList<microsoft::graph::onenoteResource> resources;
+        QList<microsoft::graph::sectionGroup> sectionGroups;
+        QList<microsoft::graph::onenoteSection> sections;
+    };
+
+    struct userActivity : graph::entity {
+        QString activationUrl;
+        QString activitySourceHost;
+        QString appActivityId;
+        QString appDisplayName;
+        microsoft::graph::Json contentInfo;
+        QString contentUrl;
+        QDateTime createdDateTime;
+        QDateTime expirationDateTime;
+        QString fallbackUrl;
+        QDateTime lastModifiedDateTime;
+        microsoft::graph::status status;
+        QString userTimezone;
+        microsoft::graph::visualInfo visualElements;
+        QList<microsoft::graph::activityHistoryItem> historyItems;
+    };
+
+    struct team : graph::entity {
+        QString classification;
+        QDateTime createdDateTime;
+        QString description;
+        QString displayName;
+        microsoft::graph::teamFunSettings funSettings;
+        microsoft::graph::teamGuestSettings guestSettings;
+        QString internalId;
+        bool isArchived;
+        microsoft::graph::teamMemberSettings memberSettings;
+        microsoft::graph::teamMessagingSettings messagingSettings;
+        microsoft::graph::teamSpecialization specialization;
+        microsoft::graph::teamVisibilityType visibility;
+        QString webUrl;
+        std::unique_ptr<microsoft::graph::schedule> schedule;
+        QList<microsoft::graph::channel> channels;
+        std::unique_ptr<microsoft::graph::group> group;
+        QList<microsoft::graph::teamsAppInstallation> installedApps;
+        QList<microsoft::graph::conversationMember> members;
+        QList<microsoft::graph::teamsAsyncOperation> operations;
+        std::unique_ptr<microsoft::graph::channel> primaryChannel;
+        std::unique_ptr<microsoft::graph::teamsTemplate> _template;
+    };
+
+    struct group : graph::directoryObject {
+        QList<microsoft::graph::assignedLabel> assignedLabels;
+        QList<microsoft::graph::assignedLicense> assignedLicenses;
+        QString classification;
+        QDateTime createdDateTime;
+        QString description;
+        QString displayName;
+        QDateTime expirationDateTime;
+        QList<QString> groupTypes;
+        bool hasMembersWithLicenseErrors;
+        bool isAssignableToRole;
+        microsoft::graph::licenseProcessingState licenseProcessingState;
+        QString mail;
+        bool mailEnabled;
+        QString mailNickname;
+        QString membershipRule;
+        QString membershipRuleProcessingState;
+        QString onPremisesDomainName;
+        QDateTime onPremisesLastSyncDateTime;
+        QString onPremisesNetBiosName;
+        QList<microsoft::graph::onPremisesProvisioningError> onPremisesProvisioningErrors;
+        QString onPremisesSamAccountName;
+        QString onPremisesSecurityIdentifier;
+        bool onPremisesSyncEnabled;
+        QString preferredDataLocation;
+        QString preferredLanguage;
+        QList<QString> proxyAddresses;
+        QDateTime renewedDateTime;
+        bool securityEnabled;
+        QString securityIdentifier;
+        QString theme;
+        QString visibility;
+        bool allowExternalSenders;
+        bool autoSubscribeNewMembers;
+        bool hideFromAddressLists;
+        bool hideFromOutlookClients;
+        bool isSubscribedByMail;
+        int unseenCount;
+        bool isArchived;
+        QList<microsoft::graph::appRoleAssignment> appRoleAssignments;
+        std::unique_ptr<microsoft::graph::directoryObject> createdOnBehalfOf;
+        QList<microsoft::graph::directoryObject> memberOf;
+        QList<microsoft::graph::directoryObject> members;
+        QList<microsoft::graph::directoryObject> membersWithLicenseErrors;
+        QList<microsoft::graph::directoryObject> owners;
+        QList<microsoft::graph::resourceSpecificPermissionGrant> permissionGrants;
+        QList<microsoft::graph::groupSetting> settings;
+        QList<microsoft::graph::directoryObject> transitiveMemberOf;
+        QList<microsoft::graph::directoryObject> transitiveMembers;
+        QList<microsoft::graph::directoryObject> acceptedSenders;
+        std::unique_ptr<microsoft::graph::calendar> calendar;
+        QList<microsoft::graph::event> calendarView;
+        QList<microsoft::graph::conversation> conversations;
+        QList<microsoft::graph::event> events;
+        std::unique_ptr<microsoft::graph::profilePhoto> photo;
+        QList<microsoft::graph::profilePhoto> photos;
+        QList<microsoft::graph::directoryObject> rejectedSenders;
+        QList<microsoft::graph::conversationThread> threads;
+        std::unique_ptr<microsoft::graph::drive> drive;
+        QList<microsoft::graph::drive> drives;
+        QList<microsoft::graph::site> sites;
+        QList<microsoft::graph::extension> extensions;
+        QList<microsoft::graph::groupLifecyclePolicy> groupLifecyclePolicies;
+        std::unique_ptr<microsoft::graph::plannerGroup> planner;
+        std::unique_ptr<microsoft::graph::onenote> onenote;
+        std::unique_ptr<microsoft::graph::team> team;
+    };
+
+    struct itemAnalytics : graph::entity {
+        std::unique_ptr<microsoft::graph::itemActivityStat> allTime;
+        QList<microsoft::graph::itemActivityStat> itemActivityStats;
+        std::unique_ptr<microsoft::graph::itemActivityStat> lastSevenDays;
+    };
+
+    struct list : graph::baseItem {
+        QString displayName;
+        microsoft::graph::listInfo list;
+        microsoft::graph::sharepointIds sharepointIds;
+        microsoft::graph::systemFacet system;
+        QList<microsoft::graph::columnDefinition> columns;
+        QList<microsoft::graph::contentType> contentTypes;
+        std::unique_ptr<microsoft::graph::drive> drive;
+        QList<microsoft::graph::listItem> items;
+        QList<microsoft::graph::subscription> subscriptions;
+    };
+
+    struct educationClass : graph::entity {
+        QString classCode;
+        microsoft::graph::educationCourse course;
+        microsoft::graph::identitySet createdBy;
+        QString description;
+        QString displayName;
+        QString externalId;
+        QString externalName;
+        microsoft::graph::educationExternalSource externalSource;
+        QString externalSourceDetail;
+        QString grade;
+        QString mailNickname;
+        microsoft::graph::educationTerm term;
+        QList<microsoft::graph::educationCategory> assignmentCategories;
+        std::unique_ptr<microsoft::graph::educationAssignmentDefaults> assignmentDefaults;
+        QList<microsoft::graph::educationAssignment> assignments;
+        std::unique_ptr<microsoft::graph::educationAssignmentSettings> assignmentSettings;
+        std::unique_ptr<microsoft::graph::group> group;
+        QList<microsoft::graph::educationUser> members;
+        QList<microsoft::graph::educationSchool> schools;
+        QList<microsoft::graph::educationUser> teachers;
+    };
+
+    struct educationUser : graph::entity {
+        bool accountEnabled;
+        QList<microsoft::graph::assignedLicense> assignedLicenses;
+        QList<microsoft::graph::assignedPlan> assignedPlans;
+        QList<QString> businessPhones;
+        microsoft::graph::identitySet createdBy;
+        QString department;
+        QString displayName;
+        microsoft::graph::educationExternalSource externalSource;
+        QString externalSourceDetail;
+        QString givenName;
+        QString mail;
+        microsoft::graph::physicalAddress mailingAddress;
+        QString mailNickname;
+        QString middleName;
+        QString mobilePhone;
+        QString officeLocation;
+        microsoft::graph::educationOnPremisesInfo onPremisesInfo;
+        QString passwordPolicies;
+        microsoft::graph::passwordProfile passwordProfile;
+        QString preferredLanguage;
+        microsoft::graph::educationUserRole primaryRole;
+        QList<microsoft::graph::provisionedPlan> provisionedPlans;
+        QDateTime refreshTokensValidFromDateTime;
+        microsoft::graph::physicalAddress residenceAddress;
+        bool showInAddressList;
+        microsoft::graph::educationStudent student;
+        QString surname;
+        microsoft::graph::educationTeacher teacher;
+        QString usageLocation;
+        QString userPrincipalName;
+        QString userType;
+        QList<microsoft::graph::educationRubric> rubrics;
+        QList<microsoft::graph::educationClass> classes;
+        QList<microsoft::graph::educationSchool> schools;
+        QList<microsoft::graph::educationClass> taughtClasses;
+        std::unique_ptr<microsoft::graph::user> user;
+    };
+
+    struct educationSchool : graph::educationOrganization {
+        microsoft::graph::physicalAddress address;
+        microsoft::graph::identitySet createdBy;
+        QString externalId;
+        QString externalPrincipalId;
+        QString fax;
+        QString highestGrade;
+        QString lowestGrade;
+        QString phone;
+        QString principalEmail;
+        QString principalName;
+        QString schoolNumber;
+        std::unique_ptr<microsoft::graph::administrativeUnit> administrativeUnit;
+        QList<microsoft::graph::educationClass> classes;
+        QList<microsoft::graph::educationUser> users;
+    };
+
+    struct educationRoot {
+        QList<microsoft::graph::educationClass> classes;
+        std::unique_ptr<microsoft::graph::educationUser> me;
+        QList<microsoft::graph::educationSchool> schools;
+        QList<microsoft::graph::educationUser> users;
+    };
+
+    struct driveItem : graph::baseItem {
+        microsoft::graph::audio audio;
+        QByteArray content;
+        QString cTag;
+        microsoft::graph::deleted deleted;
+        microsoft::graph::file file;
+        microsoft::graph::fileSystemInfo fileSystemInfo;
+        microsoft::graph::folder folder;
+        microsoft::graph::image image;
+        microsoft::graph::geoCoordinates location;
+        microsoft::graph::package package;
+        microsoft::graph::pendingOperations pendingOperations;
+        microsoft::graph::photo photo;
+        microsoft::graph::publicationFacet publication;
+        microsoft::graph::remoteItem remoteItem;
+        microsoft::graph::root root;
+        microsoft::graph::searchResult searchResult;
+        microsoft::graph::shared shared;
+        microsoft::graph::sharepointIds sharepointIds;
+        long long size;
+        microsoft::graph::specialFolder specialFolder;
+        microsoft::graph::video video;
+        QString webDavUrl;
+        std::unique_ptr<microsoft::graph::workbook> workbook;
+        std::unique_ptr<microsoft::graph::itemAnalytics> analytics;
+        QList<microsoft::graph::driveItem> children;
+        std::unique_ptr<microsoft::graph::listItem> listItem;
+        QList<microsoft::graph::permission> permissions;
+        QList<microsoft::graph::subscription> subscriptions;
+        QList<microsoft::graph::thumbnailSet> thumbnails;
+        QList<microsoft::graph::driveItemVersion> versions;
+    };
+
+    struct workbook : graph::entity {
+        std::unique_ptr<microsoft::graph::workbookApplication> application;
+        QList<microsoft::graph::workbookComment> comments;
+        std::unique_ptr<microsoft::graph::workbookFunctions> functions;
+        QList<microsoft::graph::workbookNamedItem> names;
+        QList<microsoft::graph::workbookOperation> operations;
+        QList<microsoft::graph::workbookTable> tables;
+        QList<microsoft::graph::workbookWorksheet> worksheets;
+    };
+
+    struct listItem : graph::baseItem {
+        microsoft::graph::contentTypeInfo contentType;
+        microsoft::graph::sharepointIds sharepointIds;
+        std::unique_ptr<microsoft::graph::itemAnalytics> analytics;
+        std::unique_ptr<microsoft::graph::driveItem> driveItem;
+        std::unique_ptr<microsoft::graph::fieldValueSet> fields;
+        QList<microsoft::graph::listItemVersion> versions;
+    };
+
+    struct workbookNamedItem : graph::entity {
+        QString comment;
+        QString name;
+        QString scope;
+        QString type;
+        microsoft::graph::Json value;
+        bool visible;
+        std::unique_ptr<microsoft::graph::workbookWorksheet> worksheet;
+    };
+
+    struct workbookTable : graph::entity {
+        bool highlightFirstColumn;
+        bool highlightLastColumn;
+        QString legacyId;
+        QString name;
+        bool showBandedColumns;
+        bool showBandedRows;
+        bool showFilterButton;
+        bool showHeaders;
+        bool showTotals;
+        QString style;
+        QList<microsoft::graph::workbookTableColumn> columns;
+        QList<microsoft::graph::workbookTableRow> rows;
+        std::unique_ptr<microsoft::graph::workbookTableSort> sort;
+        std::unique_ptr<microsoft::graph::workbookWorksheet> worksheet;
+    };
+
+    struct workbookWorksheet : graph::entity {
+        QString name;
+        int position;
+        QString visibility;
+        QList<microsoft::graph::workbookChart> charts;
+        QList<microsoft::graph::workbookNamedItem> names;
+        QList<microsoft::graph::workbookPivotTable> pivotTables;
+        std::unique_ptr<microsoft::graph::workbookWorksheetProtection> protection;
+        QList<microsoft::graph::workbookTable> tables;
+    };
+
+    struct workbookChart : graph::entity {
+        double height;
+        double left;
+        QString name;
+        double top;
+        double width;
+        std::unique_ptr<microsoft::graph::workbookChartAxes> axes;
+        std::unique_ptr<microsoft::graph::workbookChartDataLabels> dataLabels;
+        std::unique_ptr<microsoft::graph::workbookChartAreaFormat> format;
+        std::unique_ptr<microsoft::graph::workbookChartLegend> legend;
+        QList<microsoft::graph::workbookChartSeries> series;
+        std::unique_ptr<microsoft::graph::workbookChartTitle> title;
+        std::unique_ptr<microsoft::graph::workbookWorksheet> worksheet;
+    };
+
+    struct workbookPivotTable : graph::entity {
+        QString name;
+        std::unique_ptr<microsoft::graph::workbookWorksheet> worksheet;
+    };
+
+    struct workbookRange : graph::entity {
+        QString address;
+        QString addressLocal;
+        int cellCount;
+        int columnCount;
+        bool columnHidden;
+        int columnIndex;
+        microsoft::graph::Json formulas;
+        microsoft::graph::Json formulasLocal;
+        microsoft::graph::Json formulasR1C1;
+        bool hidden;
+        microsoft::graph::Json numberFormat;
+        int rowCount;
+        bool rowHidden;
+        int rowIndex;
+        microsoft::graph::Json text;
+        microsoft::graph::Json values;
+        microsoft::graph::Json valueTypes;
+        std::unique_ptr<microsoft::graph::workbookRangeFormat> format;
+        std::unique_ptr<microsoft::graph::workbookRangeSort> sort;
+        std::unique_ptr<microsoft::graph::workbookWorksheet> worksheet;
+    };
+
+    struct eventMessage : graph::message {
+        microsoft::graph::dateTimeTimeZone endDateTime;
+        bool isAllDay;
+        bool isDelegated;
+        bool isOutOfDate;
+        microsoft::graph::location location;
+        microsoft::graph::meetingMessageType meetingMessageType;
+        microsoft::graph::patternedRecurrence recurrence;
+        microsoft::graph::dateTimeTimeZone startDateTime;
+        microsoft::graph::eventType type;
+        std::unique_ptr<microsoft::graph::event> event;
+    };
+
+    struct eventMessageRequest : graph::eventMessage {
+        bool allowNewTimeProposals;
+        microsoft::graph::meetingRequestType meetingRequestType;
+        microsoft::graph::dateTimeTimeZone previousEndDateTime;
+        microsoft::graph::location previousLocation;
+        microsoft::graph::dateTimeTimeZone previousStartDateTime;
+        bool responseRequested;
+    };
+
+    struct eventMessageResponse : graph::eventMessage {
+        microsoft::graph::timeSlot proposedNewTime;
+        microsoft::graph::responseType responseType;
+    };
+
+    struct itemActivity : graph::entity {
+        microsoft::graph::accessAction access;
+        QDateTime activityDateTime;
+        microsoft::graph::identitySet actor;
+        std::unique_ptr<microsoft::graph::driveItem> driveItem;
+    };
+
+    struct itemActivityStat : graph::entity {
+        microsoft::graph::itemActionStat access;
+        microsoft::graph::itemActionStat create;
+        microsoft::graph::itemActionStat _delete;
+        microsoft::graph::itemActionStat edit;
+        QDateTime endDateTime;
+        microsoft::graph::incompleteData incompleteData;
+        bool isTrending;
+        microsoft::graph::itemActionStat move;
+        QDateTime startDateTime;
+        QList<microsoft::graph::itemActivity> activities;
+    };
+
+    struct sharedDriveItem : graph::baseItem {
+        microsoft::graph::identitySet owner;
+        std::unique_ptr<microsoft::graph::driveItem> driveItem;
+        QList<microsoft::graph::driveItem> items;
+        std::unique_ptr<microsoft::graph::list> list;
+        std::unique_ptr<microsoft::graph::listItem> listItem;
+        std::unique_ptr<microsoft::graph::permission> permission;
+        std::unique_ptr<microsoft::graph::driveItem> root;
+        std::unique_ptr<microsoft::graph::site> site;
+    };
+
+    struct deviceManagement : graph::entity {
+        QUuid intuneAccountId;
+        microsoft::graph::deviceManagementSettings settings;
+        microsoft::graph::intuneBrand intuneBrand;
+        microsoft::graph::deviceManagementSubscriptionState subscriptionState;
+        QList<microsoft::graph::termsAndConditions> termsAndConditions;
+        QList<microsoft::graph::deviceCompliancePolicy> deviceCompliancePolicies;
+        std::unique_ptr<microsoft::graph::deviceCompliancePolicyDeviceStateSummary> deviceCompliancePolicyDeviceStateSummary;
+        QList<microsoft::graph::deviceCompliancePolicySettingStateSummary> deviceCompliancePolicySettingStateSummaries;
+        std::unique_ptr<microsoft::graph::deviceConfigurationDeviceStateSummary> deviceConfigurationDeviceStateSummaries;
+        QList<microsoft::graph::deviceConfiguration> deviceConfigurations;
+        QList<microsoft::graph::iosUpdateDeviceStatus> iosUpdateStatuses;
+        std::unique_ptr<microsoft::graph::softwareUpdateStatusSummary> softwareUpdateStatusSummary;
+        QList<microsoft::graph::complianceManagementPartner> complianceManagementPartners;
+        std::unique_ptr<microsoft::graph::onPremisesConditionalAccessSettings> conditionalAccessSettings;
+        QList<microsoft::graph::deviceCategory> deviceCategories;
+        QList<microsoft::graph::deviceEnrollmentConfiguration> deviceEnrollmentConfigurations;
+        QList<microsoft::graph::deviceManagementPartner> deviceManagementPartners;
+        QList<microsoft::graph::deviceManagementExchangeConnector> exchangeConnectors;
+        QList<microsoft::graph::mobileThreatDefenseConnector> mobileThreatDefenseConnectors;
+        std::unique_ptr<microsoft::graph::applePushNotificationCertificate> applePushNotificationCertificate;
+        QList<microsoft::graph::detectedApp> detectedApps;
+        std::unique_ptr<microsoft::graph::managedDeviceOverview> managedDeviceOverview;
+        QList<microsoft::graph::managedDevice> managedDevices;
+        QList<microsoft::graph::importedWindowsAutopilotDeviceIdentity> importedWindowsAutopilotDeviceIdentities;
+        QList<microsoft::graph::windowsAutopilotDeviceIdentity> windowsAutopilotDeviceIdentities;
+        QList<microsoft::graph::notificationMessageTemplate> notificationMessageTemplates;
+        QList<microsoft::graph::resourceOperation> resourceOperations;
+        QList<microsoft::graph::deviceAndAppManagementRoleAssignment> roleAssignments;
+        QList<microsoft::graph::roleDefinition> roleDefinitions;
+        QList<microsoft::graph::remoteAssistancePartner> remoteAssistancePartners;
+        std::unique_ptr<microsoft::graph::deviceManagementReports> reports;
+        QList<microsoft::graph::telecomExpenseManagementPartner> telecomExpenseManagementPartners;
+        QList<microsoft::graph::deviceManagementTroubleshootingEvent> troubleshootingEvents;
+        QList<microsoft::graph::windowsInformationProtectionAppLearningSummary> windowsInformationProtectionAppLearningSummaries;
+        QList<microsoft::graph::windowsInformationProtectionNetworkLearningSummary> windowsInformationProtectionNetworkLearningSummaries;
+    };
+
+    struct termsAndConditions : graph::entity {
+        QString acceptanceStatement;
+        QString bodyText;
+        QDateTime createdDateTime;
+        QString description;
+        QString displayName;
+        QDateTime lastModifiedDateTime;
+        QString title;
+        int version;
+        QList<microsoft::graph::termsAndConditionsAcceptanceStatus> acceptanceStatuses;
+        QList<microsoft::graph::termsAndConditionsAssignment> assignments;
+    };
+
+    struct roleAssignment : graph::entity {
+        QString description;
+        QString displayName;
+        QList<QString> resourceScopes;
+        std::unique_ptr<microsoft::graph::roleDefinition> roleDefinition;
+    };
+
+    struct deviceAndAppManagementRoleAssignment : graph::roleAssignment {
+        QList<QString> members;
+    };
+
+    struct roleDefinition : graph::entity {
+        QString description;
+        QString displayName;
+        bool isBuiltIn;
+        QList<microsoft::graph::rolePermission> rolePermissions;
+        QList<microsoft::graph::roleAssignment> roleAssignments;
+    };
+
+    struct termsAndConditionsAcceptanceStatus : graph::entity {
+        QDateTime acceptedDateTime;
+        int acceptedVersion;
+        QString userDisplayName;
+        QString userPrincipalName;
+        std::unique_ptr<microsoft::graph::termsAndConditions> termsAndConditions;
+    };
+
+    struct deviceAndAppManagementRoleDefinition : graph::roleDefinition {
+    };
+
+    struct notebook : graph::onenoteEntityHierarchyModel {
+        bool isDefault;
+        bool isShared;
+        microsoft::graph::notebookLinks links;
+        QString sectionGroupsUrl;
+        QString sectionsUrl;
+        microsoft::graph::onenoteUserRole userRole;
+        QList<microsoft::graph::sectionGroup> sectionGroups;
+        QList<microsoft::graph::onenoteSection> sections;
+    };
+
+    struct sectionGroup : graph::onenoteEntityHierarchyModel {
+        QString sectionGroupsUrl;
+        QString sectionsUrl;
+        std::unique_ptr<microsoft::graph::notebook> parentNotebook;
+        std::unique_ptr<microsoft::graph::sectionGroup> parentSectionGroup;
+        QList<microsoft::graph::sectionGroup> sectionGroups;
+        QList<microsoft::graph::onenoteSection> sections;
+    };
+
+    struct onenoteSection : graph::onenoteEntityHierarchyModel {
+        bool isDefault;
+        microsoft::graph::sectionLinks links;
+        QString pagesUrl;
+        QList<microsoft::graph::onenotePage> pages;
+        std::unique_ptr<microsoft::graph::notebook> parentNotebook;
+        std::unique_ptr<microsoft::graph::sectionGroup> parentSectionGroup;
+    };
+
+    struct onenotePage : graph::onenoteEntitySchemaObjectModel {
+        QByteArray content;
+        QString contentUrl;
+        QString createdByAppId;
+        QDateTime lastModifiedDateTime;
+        int level;
+        microsoft::graph::pageLinks links;
+        int order;
+        QString title;
+        QList<QString> userTags;
+        std::unique_ptr<microsoft::graph::notebook> parentNotebook;
+        std::unique_ptr<microsoft::graph::onenoteSection> parentSection;
+    };
+
+    struct print {
+        microsoft::graph::printSettings settings;
+        QList<microsoft::graph::printConnector> connectors;
+        QList<microsoft::graph::printOperation> operations;
+        QList<microsoft::graph::printer> printers;
+        QList<microsoft::graph::printService> services;
+        QList<microsoft::graph::printerShare> shares;
+        QList<microsoft::graph::printTaskDefinition> taskDefinitions;
+    };
+
+    struct printerBase : graph::entity {
+        microsoft::graph::printerCapabilities capabilities;
+        microsoft::graph::printerDefaults defaults;
+        QString displayName;
+        bool isAcceptingJobs;
+        microsoft::graph::printerLocation location;
+        QString manufacturer;
+        QString model;
+        microsoft::graph::printerStatus status;
+        QList<microsoft::graph::printJob> jobs;
+    };
+
+    struct printer : graph::printerBase {
+        bool hasPhysicalDevice;
+        bool isShared;
+        QDateTime lastSeenDateTime;
+        QDateTime registeredDateTime;
+        QList<microsoft::graph::printConnector> connectors;
+        QList<microsoft::graph::printerShare> shares;
+        QList<microsoft::graph::printTaskTrigger> taskTriggers;
+    };
+
+    struct printerShare : graph::printerBase {
+        bool allowAllUsers;
+        QDateTime createdDateTime;
+        QList<microsoft::graph::group> allowedGroups;
+        QList<microsoft::graph::user> allowedUsers;
+        std::unique_ptr<microsoft::graph::printer> printer;
+    };
+
+    struct printTaskDefinition : graph::entity {
+        microsoft::graph::appIdentity createdBy;
+        QString displayName;
+        QList<microsoft::graph::printTask> tasks;
+    };
+
+    struct printTaskTrigger : graph::entity {
+        microsoft::graph::printEvent event;
+        std::unique_ptr<microsoft::graph::printTaskDefinition> definition;
+    };
+
+    struct printJob : graph::entity {
+        microsoft::graph::printJobConfiguration configuration;
+        microsoft::graph::userIdentity createdBy;
+        QDateTime createdDateTime;
+        bool isFetchable;
+        QString redirectedFrom;
+        QString redirectedTo;
+        microsoft::graph::printJobStatus status;
+        QList<microsoft::graph::printDocument> documents;
+        QList<microsoft::graph::printTask> tasks;
+    };
+
+    struct printerCreateOperation : graph::printOperation {
+        QString certificate;
+        std::unique_ptr<microsoft::graph::printer> printer;
+    };
+
+    struct printTask : graph::entity {
+        QString parentUrl;
+        microsoft::graph::printTaskStatus status;
+        std::unique_ptr<microsoft::graph::printTaskDefinition> definition;
+        std::unique_ptr<microsoft::graph::printTaskTrigger> trigger;
+    };
+
+    struct activityHistoryItem : graph::entity {
+        int activeDurationSeconds;
+        QDateTime createdDateTime;
+        QDateTime expirationDateTime;
+        QDateTime lastActiveDateTime;
+        QDateTime lastModifiedDateTime;
+        QDateTime startedDateTime;
+        microsoft::graph::status status;
+        QString userTimezone;
+        std::unique_ptr<microsoft::graph::userActivity> activity;
+    };
+
+    struct aadUserConversationMember : graph::conversationMember {
+        QString email;
+        QString tenantId;
+        QString userId;
+        std::unique_ptr<microsoft::graph::user> user;
+    };
+
+    struct channel : graph::entity {
+        QDateTime createdDateTime;
+        QString description;
+        QString displayName;
+        QString email;
+        bool isFavoriteByDefault;
+        microsoft::graph::channelMembershipType membershipType;
+        QString webUrl;
+        std::unique_ptr<microsoft::graph::driveItem> filesFolder;
+        QList<microsoft::graph::conversationMember> members;
+        QList<microsoft::graph::chatMessage> messages;
+        QList<microsoft::graph::teamsTab> tabs;
+    };
+
+} // namespace microsoft::graph
+
+namespace microsoft::graph::termStore {
+    struct store : graph::entity {
+        QString defaultLanguageTag;
+        QList<QString> languageTags;
+        QList<microsoft::graph::termStore::group> groups;
+        QList<microsoft::graph::termStore::set> sets;
+    };
+
+    struct group : graph::entity {
+        QDateTime createdDateTime;
+        QString description;
+        QString displayName;
+        QString parentSiteId;
+        microsoft::graph::termStore::termGroupScope scope;
+        QList<microsoft::graph::termStore::set> sets;
+    };
+
+    struct set : graph::entity {
+        QDateTime createdDateTime;
+        QString description;
+        QList<microsoft::graph::termStore::localizedName> localizedNames;
+        QList<microsoft::graph::keyValue> properties;
+        QList<microsoft::graph::termStore::term> children;
+        std::unique_ptr<microsoft::graph::termStore::group> parentGroup;
+        QList<microsoft::graph::termStore::relation> relations;
+        QList<microsoft::graph::termStore::term> terms;
+    };
+
+    struct relation : graph::entity {
+        microsoft::graph::termStore::relationType relationship;
+        std::unique_ptr<microsoft::graph::termStore::term> fromTerm;
+        std::unique_ptr<microsoft::graph::termStore::set> set;
+        std::unique_ptr<microsoft::graph::termStore::term> toTerm;
+    };
+
+    struct term : graph::entity {
+        QDateTime createdDateTime;
+        QList<microsoft::graph::termStore::localizedDescription> descriptions;
+        QList<microsoft::graph::termStore::localizedLabel> labels;
+        QDateTime lastModifiedDateTime;
+        QList<microsoft::graph::keyValue> properties;
+        QList<microsoft::graph::termStore::term> children;
+        QList<microsoft::graph::termStore::relation> relations;
+        std::unique_ptr<microsoft::graph::termStore::set> set;
+    };
+
+} // namespace microsoft::graph::termStore
 
 // clang-format on
