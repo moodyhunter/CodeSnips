@@ -132,10 +132,15 @@ def popIdent():
 
 
 def filterKeywords(s: str):
-    if s in ["new",     "delete", "class",    "struct", "enum", "namespace",  "export", "default",
-             "auto",    "double", "int",      "float",  "long", "operator", "template",
-             "private", "public", "protected"]:
+    kws = ["new",     "delete", "class",    "struct", "enum", "namespace",  "export", "default",
+           "auto",    "double", "int",      "float",  "long", "operator", "template",
+           "case",    "bool",   "and",      "or",     "not",
+           "private", "public", "protected", "friend"]
+    if s in kws:
         return "_" + s
+    for kw in kws:
+        if s.endswith("." + kw):
+            return s[:s.rindex(".")+1] + "_" + s[s.rindex(".")+1:]
     return s
 
 
@@ -143,7 +148,7 @@ def edmTypeToCpp(t: str):
     if t in EDM_TYPE_MAP:
         return EDM_TYPE_MAP[t]
     if t.startswith("Collection(") and t.endswith(")"):
-        return "QList<" + replaceColons(edmTypeToCpp(t[11:-1])) + ">"
+        return "QList<" + replaceColons(edmTypeToCpp(filterKeywords(t[11:-1]))) + ">"
     for alias in NAMESPACE_ALIASES:
         if t.startswith(alias + "."):
             t = t.replace(alias + ".", NAMESPACE_ALIASES[alias] + ".")
@@ -160,7 +165,7 @@ def parseNamespace(node: ET.Element):
     for child in node:
         xmlKeyType = child.tag.removeprefix(PREFIX)
         if xmlKeyType == "EnumType":
-            displayName = child.attrib["Name"]
+            displayName = filterKeywords(child.attrib["Name"])
             fullType = ns + "::" + displayName
             ALL_TYPES[fullType] = type_info()
             ALL_TYPES[fullType].name = displayName
@@ -172,7 +177,7 @@ def parseNamespace(node: ET.Element):
             ALL_TYPES[fullType].appendPrintStr(idented("};"))
             nstypes.append(fullType)
         elif xmlKeyType == "EntityType" or xmlKeyType == "ComplexType":
-            displayName = child.attrib["Name"]
+            displayName = filterKeywords(child.attrib["Name"])
             fullType = ns + "::" + displayName
             ALL_TYPES[fullType] = type_info()
             ALL_TYPES[fullType].name = displayName
@@ -188,7 +193,7 @@ def parseNamespace(node: ET.Element):
                 if grandchild.tag == PREFIX + "Key":
                     # Special case: <Key/>, don't know how to resolve it.
                     continue
-                proptype = edmTypeToCpp(grandchild.attrib["Type"])
+                proptype = edmTypeToCpp(filterKeywords(grandchild.attrib["Type"]))
                 if grandchild.tag == PREFIX + "NavigationProperty" and not proptype.startswith("QList<") or proptype == fullType:
                     proptype = "std::unique_ptr<" + proptype + ">"
 
@@ -260,7 +265,7 @@ def main():
     print("")
     print("// clang-format off")
 
-    tree = ET.parse('metadata.xml')
+    tree = ET.parse('metadata-beta.xml')
     root = tree.getroot()
     parseTreeRecursively(root)
 
